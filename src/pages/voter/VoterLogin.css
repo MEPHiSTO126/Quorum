@@ -1,0 +1,83 @@
+.vlogin-shell {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-6);
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+.vlogin-bg-orb {
+  position: fixed;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, var(--brand-500) 0%, transparent 70%);
+  filter: blur(120px);
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.vlogin-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-8) var(--sp-6);
+  max-width: 400px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+  animation: slide-up var(--dur-slow) var(--ease);
+}
+
+.vlogin-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: center;
+}
+.vlogin-brand-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+.vlogin-brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #fff, var(--brand-300));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vlogin-session-info {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  justify-content: center;
+  background: rgba(34,197,94,0.06);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+}
+
+.vlogin-header { text-align: center; }
+.vlogin-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+
+.vlogin-form { display: flex; flex-direction: column; gap: var(--sp-4); }
+
+.vlogin-waiting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-6) 0;
+  text-align: center;
+}
+.vlogin-waiting h2 { font-size: 20px; font-weight: 700; }

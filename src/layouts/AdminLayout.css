@@ -1,0 +1,301 @@
+.admin-shell {
+  display: flex;
+  min-height: 100dvh;
+}
+
+/* ── Sidebar ── */
+.admin-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  padding: var(--sp-6) var(--sp-4);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-2) var(--sp-6);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--sp-4);
+}
+
+.sidebar-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--brand-400), var(--brand-300));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Nav ── */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  /* no flex:1 here — let the sessions panel grow instead */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--dur-base) var(--ease);
+  position: relative;
+}
+.nav-item:hover {
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+}
+.nav-item.active {
+  color: var(--brand-400);
+  background: var(--brand-subtle);
+}
+.nav-chevron { margin-left: auto; opacity: 0.5; }
+
+/* ── Footer ── */
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+  margin-top: var(--sp-4);
+}
+
+.org-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.org-avatar {
+  width: 30px; height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-subtle);
+  border: 1px solid var(--border-brand);
+  color: var(--brand-400);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.org-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.org-name {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.org-email {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logout-btn { color: var(--text-muted); }
+.logout-btn:hover { color: var(--danger); background: var(--danger-subtle); }
+
+/* ── Session Quick Links ── */
+.sidebar-sessions {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.sidebar-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 var(--sp-2);
+}
+
+.sidebar-sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+/* Card per session */
+.session-link-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--dur-base);
+}
+.session-link-card:hover { border-color: var(--border-brand); }
+.session-link-card.slc-live { border-color: rgba(34,197,94,0.3); }
+
+/* Collapsible header */
+.slc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  transition: background var(--dur-fast), color var(--dur-fast);
+  text-align: left;
+}
+.slc-header:hover { background: var(--bg-overlay); color: var(--text-primary); }
+.slc-live .slc-header { background: rgba(34,197,94,0.07); }
+
+.slc-name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+}
+.slc-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 148px;
+}
+
+/* Body — the rows */
+.slc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  animation: slide-up 120ms ease;
+}
+
+.slc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding: 7px 10px;
+  background: var(--bg-surface);
+  transition: background var(--dur-fast);
+}
+.slc-row:hover { background: var(--bg-elevated); }
+
+.slc-row-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-width: 0;
+  flex: 1;
+}
+.slc-row-icon { color: var(--text-muted); flex-shrink: 0; }
+
+.slc-row-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 1px;
+}
+.slc-row-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.slc-row-value {
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+.slc-row-value.mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--brand-400);
+  letter-spacing: 0.04em;
+}
+
+/* Copy button */
+.slc-copy-btn {
+  width: 22px; height: 22px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: all var(--dur-fast);
+}
+.slc-copy-btn:hover { color: var(--text-primary); background: var(--bg-elevated); }
+.slc-copy-btn.copied { color: var(--success); }
+
+/* ── Main ── */
+.admin-main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg-base);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .admin-shell { flex-direction: column; }
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    flex-direction: row;
+    padding: var(--sp-3) var(--sp-4);
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-brand { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .sidebar-nav { flex-direction: row; flex: unset; gap: var(--sp-1); }
+  .nav-chevron { display: none; }
+  .sidebar-sessions { display: none; }
+  .sidebar-footer { border-top: none; padding-top: 0; margin-top: 0; margin-left: auto; }
+  .org-info { display: none; }
+}
