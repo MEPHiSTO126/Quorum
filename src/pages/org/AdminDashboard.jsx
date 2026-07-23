@@ -4,7 +4,7 @@ import { useSession } from '../../context/SessionContext'
 import AdminLayout from '../../layouts/AdminLayout'
 import {
   Plus, Copy, ExternalLink, Edit3, Radio, Clock, CheckCircle2,
-  FileText, Users, Vote, TrendingUp
+  FileText, Users, Vote, TrendingUp, Layers, Activity, CalendarClock, UserCheck
 } from 'lucide-react'
 import './AdminDashboard.css'
 
@@ -52,21 +52,26 @@ export default function AdminDashboard() {
 
         {/* Stats */}
         <div className="stats-grid">
-          <StatCard icon={Vote}      label="Total Sessions"    value={sessions.length} />
-          <StatCard icon={Radio}     label="Live Now"          value={liveSessions.length}      accent="live" />
-          <StatCard icon={Clock}     label="Upcoming"          value={scheduledSessions.length} accent="warn" />
-          <StatCard icon={Users}     label="Total Accredited"  value={totalVoters.toLocaleString()} />
+          <StatCard icon={Layers}        label="Total Sessions"   value={sessions.length} />
+          <StatCard icon={Activity}      label="Live Now"         value={liveSessions.length}      accent="live" />
+          <StatCard icon={CalendarClock} label="Upcoming"         value={scheduledSessions.length} accent="warn" />
+          <StatCard icon={UserCheck}     label="Total Accredited" value={totalVoters.toLocaleString()} />
         </div>
 
         {/* Live banner */}
         {liveSessions.length > 0 && (
           <div className="live-banner">
             <div className="flex items-center gap-3">
-              <div className="live-dot" />
-              <span className="fw-600">
-                {liveSessions.length === 1
-                  ? `"${liveSessions[0].name}" is live right now`
-                  : `${liveSessions.length} sessions are live right now`}
+              <span className="live-banner-text">
+                {liveSessions.length === 1 ? (
+                  <>
+                    <span className="live-session-glowing-name">{liveSessions[0].name}</span> is live right now
+                  </>
+                ) : (
+                  <>
+                    <span className="live-session-glowing-name">{liveSessions.length} sessions</span> are live right now
+                  </>
+                )}
               </span>
             </div>
             <Link to={`/admin/sessions/${liveSessions[0].id}/live`} className="btn btn-sm" style={{background:'rgba(34,197,94,0.15)', color:'var(--live)', border:'1px solid rgba(34,197,94,0.3)'}}>
