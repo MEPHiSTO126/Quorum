@@ -1,0 +1,640 @@
+/* ─────────────────────────────────────────────────────────────
+   Landing Page Styles — Quorum Institutional Editorial Layout
+   De-SaaS visual architecture: Asymmetric, tactile, authoritative
+───────────────────────────────────────────────────────────── */
+
+.landing-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-base);
+}
+
+/* ── Topbar ─────────────────────────────────────────────────── */
+.landing-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) var(--sp-8);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: var(--sp-4);
+}
+
+.landing-topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  text-decoration: none;
+}
+
+.landing-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: var(--radius-xs);
+}
+
+[data-theme="dark"] .landing-logo {
+  filter: brightness(0) invert(1);
+}
+
+.landing-brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+
+.landing-topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.landing-nav-link {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.landing-nav-link:hover {
+  color: var(--text-primary);
+}
+
+.landing-cta-btn {
+  margin-left: var(--sp-2);
+}
+
+/* ── Hero: Asymmetric Editorial ─────────────────────────────── */
+.landing-hero {
+  padding: var(--sp-12) var(--sp-8) var(--sp-16);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+}
+
+.hero-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--sp-12);
+  align-items: center;
+}
+
+.hero-editorial {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--sp-5);
+}
+
+.hero-seal {
+  margin-bottom: var(--sp-1);
+}
+
+.hero-title {
+  font-size: 46px;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+}
+
+.hero-subtitle {
+  font-size: 15.5px;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+/* Mono Ledger Row (Not centered pill badges) */
+.hero-ledger-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  width: fit-content;
+  margin-top: var(--sp-2);
+  flex-wrap: wrap;
+}
+
+.ledger-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ledger-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brand-500);
+}
+
+.ledger-divider {
+  width: 1px;
+  height: 12px;
+  background: var(--border-strong);
+}
+
+/* ── How It Works Card (Hero Right, static explainer) ───────── */
+.hero-proof-panel {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-how-card {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-6);
+}
+
+.hero-how-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.hero-how-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+}
+
+.how-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding-top: 2px;
+}
+
+.how-step-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  background: var(--brand-subtle);
+  border: 1px solid var(--border-brand);
+  color: var(--brand-500);
+}
+
+.how-step-title {
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.how-step-desc {
+  margin: 2px 0 0;
+}
+
+/* ── Section Structure ───────────────────────────────────────── */
+.landing-section {
+  padding: var(--sp-16) var(--sp-8);
+}
+
+.landing-section--alt {
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-10);
+}
+
+.section-preamble {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  max-width: 680px;
+}
+
+.section-index {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--brand-500);
+}
+
+.section-headline {
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.section-dek {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── Organisations: Asymmetric Steps Ledger & Single Featured Card */
+.org-editorial-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--sp-8);
+  align-items: start;
+}
+
+.org-steps-rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.org-step-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: var(--sp-4);
+  align-items: baseline;
+}
+
+.org-step-num {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brand-500);
+  line-height: 1;
+}
+
+.org-step-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.org-step-title {
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.org-step-desc {
+  line-height: 1.55;
+}
+
+/* Single Featured Audit Card */
+.org-featured-card {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-top: 2.5px dashed var(--brand-500);
+}
+
+.featured-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.06em;
+  color: var(--brand-500);
+  font-weight: 700;
+}
+
+.featured-card-title {
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.featured-card-body {
+  line-height: 1.6;
+}
+
+.featured-card-spec {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  font-size: 11px;
+}
+
+.spec-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spec-label {
+  color: var(--text-muted);
+}
+
+.spec-arrow {
+  color: var(--text-muted);
+  font-size: 9.5px;
+  padding: 2px 0;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  text-align: center;
+}
+
+.featured-card-subtext {
+  line-height: 1.5;
+}
+
+.featured-card-cta {
+  margin-top: var(--sp-2);
+}
+
+/* ── Voter Section: Horizontal Numbered Timeline (NO card-per-step) */
+.voter-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--sp-5);
+  position: relative;
+  padding: var(--sp-2) 0;
+}
+
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  position: relative;
+}
+
+.timeline-top {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  position: relative;
+}
+
+.timeline-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-500);
+}
+
+.timeline-connector {
+  flex: 1;
+  height: 1px;
+  background: var(--border-strong);
+}
+
+.timeline-node:last-child .timeline-connector {
+  display: none;
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.timeline-title {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.timeline-desc {
+  line-height: 1.55;
+  font-size: 12.5px;
+}
+
+/* Elector Guarantees: High-density flat rule list */
+.voter-pillars-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+  padding: var(--sp-6) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.voter-pillar-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.pillar-header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.pillar-bullet {
+  font-size: 9px;
+  color: var(--brand-500);
+}
+
+.pillar-title {
+  font-size: 14.5px;
+  color: var(--text-primary);
+}
+
+.pillar-desc {
+  line-height: 1.6;
+}
+
+.voter-action-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.landing-footer {
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  padding: var(--sp-8);
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-5);
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.footer-link:hover {
+  color: var(--text-primary);
+}
+
+.footer-sep {
+  color: var(--border-strong);
+  font-size: 11px;
+}
+
+.footer-copy {
+  border-top: 1px solid var(--border);
+  padding-top: var(--sp-4);
+  line-height: 1.5;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+
+  .hero-proof-panel {
+    justify-content: flex-start;
+  }
+
+  .hero-how-card {
+    max-width: 100%;
+  }
+
+  .org-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+
+  .org-featured-card {
+    position: static;
+  }
+
+  .voter-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-6);
+  }
+
+  .timeline-node:nth-child(2) .timeline-connector,
+  .timeline-node:nth-child(4) .timeline-connector {
+    display: none;
+  }
+
+  .voter-pillars-row {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-topbar {
+    padding: var(--sp-3) var(--sp-4);
+  }
+
+  .landing-nav-link {
+    display: none;
+  }
+
+  .landing-hero {
+    padding: var(--sp-8) var(--sp-4) var(--sp-12);
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 14.5px;
+  }
+
+  .landing-section {
+    padding: var(--sp-10) var(--sp-4);
+  }
+
+  .section-headline {
+    font-size: 26px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-ledger-strip {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-2);
+  }
+
+  .ledger-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .voter-timeline {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+
+  .timeline-connector {
+    display: none;
+  }
+
+  .org-step-row {
+    grid-template-columns: 28px 1fr;
+    gap: var(--sp-3);
+  }
+}

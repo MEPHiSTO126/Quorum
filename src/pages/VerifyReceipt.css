@@ -1,0 +1,124 @@
+/* ─────────────────────────────────────────────────────────────
+   Verify Receipt Page Styles
+───────────────────────────────────────────────────────────── */
+
+.verify-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-base);
+}
+
+.verify-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4) var(--sp-8);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: var(--sp-4);
+}
+
+.verify-brand-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.verify-content {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--sp-12) var(--sp-8);
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.verify-loading,
+.verify-error {
+  text-align: center;
+  padding: var(--sp-10);
+}
+
+.verify-card {
+  width: 100%;
+}
+
+.verify-seal-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--success-subtle);
+  color: var(--success);
+  margin: 0 auto var(--sp-4);
+}
+
+.verify-title {
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: var(--sp-3);
+}
+
+.verify-actions {
+  display: flex;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .verify-title {
+    font-size: 24px;
+  }
+
+  .verify-content {
+    padding: var(--sp-8) var(--sp-4);
+  }
+
+  .verify-actions {
+    flex-direction: column;
+  }
+
+  .verify-actions .btn {
+    width: 100%;
+  }
+}
+
+/* Print styles for verification receipt */
+@media print {
+  .verify-header,
+  .theme-toggle-btn,
+  .verify-actions {
+    display: none !important;
+  }
+
+  .verify-shell {
+    background: #fff;
+  }
+
+  .verify-content {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .verify-card {
+    border: 1px solid #000;
+    box-shadow: none;
+  }
+
+  .ballot-receipt-tape {
+    break-inside: avoid;
+  }
+}
