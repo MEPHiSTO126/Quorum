@@ -91,6 +91,7 @@ export default function AdminDashboard() {
             label="ELECTORS"
             value={totalVoters.toLocaleString()}
             subtext={`${totalVotesCast} verified ballots cast`}
+            primary
           />
         </div>
 
@@ -182,9 +183,9 @@ export default function AdminDashboard() {
   )
 }
 
-function StatCard({ index, label, value, accent, subtext }) {
+function StatCard({ index, label, value, accent, subtext, primary }) {
   return (
-    <div className={`stat-card card-flat ${accent ? `stat-${accent}` : ''}`}>
+    <div className={`stat-card card-flat ${accent ? `stat-${accent}` : ''}${primary ? ' primary' : ''}`}>
       <div className="stat-card-header">
         <span className="stat-label text-xs text-secondary font-mono">{label}</span>
         {accent === 'live' ? (

@@ -177,10 +177,8 @@ function SignInFlow() {
     setLocalError('')
     setOtp(['', '', '', '', '', ''])
     await requestOtp(email)
+    // The ticker useEffect above owns the countdown — no second timer here.
     setResendCooldown(60)
-    const interval = setInterval(() => {
-      setResendCooldown(c => { if (c <= 1) { clearInterval(interval); return 0 } return c - 1 })
-    }, 1000)
   }
 
   return (
@@ -347,10 +345,8 @@ function SignUpFlow() {
     setLocalError('')
     setOtp(['', '', '', '', '', ''])
     await registerOrg(form.name, form.email, form.description)
+    // The ticker useEffect above owns the countdown — no second timer here.
     setResendCooldown(60)
-    const interval = setInterval(() => {
-      setResendCooldown(c => { if (c <= 1) { clearInterval(interval); return 0 } return c - 1 })
-    }, 1000)
   }
 
   return (

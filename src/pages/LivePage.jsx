@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useSession } from '../context/SessionContext'
 import { sessionService } from '../services/sessionService.js'
@@ -12,16 +12,26 @@ import './LivePage.css'
 function useLiveTelemetry(code, enabled, intervalMs) {
   const [telemetry, setTelemetry] = useState(null)
   const [syncState, setSyncState] = useState('idle')
+  const requestRef = useRef(0)
+  const inFlightRef = useRef(false)
 
   const poll = useCallback(async () => {
     if (!code || !enabled) return
+    // Skip overlapping polls; a slow response must never clobber newer data.
+    if (inFlightRef.current) return
+    inFlightRef.current = true
+    const requestId = ++requestRef.current
     setSyncState('syncing')
     try {
       const fresh = await sessionService.getSessionByCode(code)
+      if (requestRef.current !== requestId) return // superseded (e.g. session switched mid-flight)
       setTelemetry(fresh)
       setSyncState('synced')
     } catch {
+      if (requestRef.current !== requestId) return
       setSyncState('error')
+    } finally {
+      inFlightRef.current = false
     }
   }, [code, enabled])
 
@@ -189,6 +199,7 @@ export default function LivePage() {
             value={`${turnoutPct}%`}
             accent={quorumMet ? 'success' : undefined}
             subtext={quorumMet ? `Quorum Met (≥${quorumThreshold}%)` : `Quorum Pending (<${quorumThreshold}%)`}
+            primary
           />
           {session.status === 'live' && (
             <StatTile
@@ -289,9 +300,9 @@ export default function LivePage() {
   )
 }
 
-function StatTile({ index, label, value, accent, subtext }) {
+function StatTile({ index, label, value, accent, subtext, primary }) {
   return (
-    <div className={`live-stat-tile card-flat ${accent ? `live-stat-${accent}` : ''}`}>
+    <div className={`live-stat-tile card-flat ${accent ? `live-stat-${accent}` : ''}${primary ? ' primary' : ''}`}>
       <div className="flex items-center justify-between">
         <span className="live-stat-label text-xs font-mono text-muted">{index} // {label}</span>
         {accent === 'live' && <span className="live-dot" style={{ width: 6, height: 6 }} />}

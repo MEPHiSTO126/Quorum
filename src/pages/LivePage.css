@@ -125,6 +125,15 @@
   font-size: 19px;
 }
 
+/* ── Primary Stat Tile [R3]: one hero number per view ─────── */
+.live-stat-tile.primary {
+  border-color: var(--border-brand);
+  background: var(--brand-subtle);
+}
+.live-stat-tile.primary .live-stat-value {
+  font-size: 30px;
+}
+
 /* ── Quorum Gauge ── */
 .live-turnout-card {
   padding: var(--sp-5) var(--sp-6);
