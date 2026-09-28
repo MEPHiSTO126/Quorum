@@ -19,7 +19,7 @@ Load these project skills first and apply their checklists (skills live in `.ope
 
 Project invariants (FAIL if violated):
 
-- `npm run lint` and `npm run build` must pass; run both and report output.
+- `npm run lint`, `npm test`, and `npm run build` must pass; run all three and report output.
 - No purple/blue gradients, no glassmorphism cards, no emojis in UI; one flat cobalt accent (`#1e40af`/`#2563eb`); Newsreader serif headlines, Plus Jakarta Sans body, JetBrains Mono data.
 - No fabricated live data on public surfaces: landing page must never render session codes, counts, or tally links.
 - Public session endpoints must never expose `accreditedVoters`.

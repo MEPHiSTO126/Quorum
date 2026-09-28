@@ -26,8 +26,8 @@ domain, before writing code.
 
 After any change under `src/` (or to services, contexts, router), the build
 agent MUST dispatch the `verify-gate` subagent via the Task tool and fix every
-FAIL before finishing. The gate runs `npm run lint` + `npm run build` itself
-and reviews correctness, security (token handling, OTP rate limiting,
+FAIL before finishing. The gate runs `npm run lint` + `npm test` + `npm run build`
+itself and reviews correctness, security (token handling, OTP rate limiting,
 accredited-voter privacy shielding, XSS), and test coverage, returning
 PASS/FAIL verdicts with `file:line` citations. A FAIL on any lens blocks the
 change. This mirrors the `design-reviewer` gate used on UI work.
